@@ -1,6 +1,6 @@
 import { generateReturnsArray } from './src/investmentGoals';
 
-const calculateButton = document.getElementById('calcular-investimento');
+const calculateButton = document.getElementById('btn-calcular-investimento');
 
 function renderInvestments() {
   const aporteInicial = Number(document.getElementById('aporte-inicial').value);
@@ -8,19 +8,27 @@ function renderInvestments() {
   const tempodeContribuicao = Number(
     document.getElementById('prazo-de-aportes').value,
   );
-  const periodo = document.getElementById('periodo-prazo-de-aportes').value;
+  const periodoContribuicao = document.getElementById(
+    'periodo-prazo-de-aportes',
+  ).value;
   const rentabilidade = Number(document.getElementById('rentabilidade').value);
   const periodoRentabilidade = document.getElementById(
     'periodo-rentabilidade',
   ).value;
-  const taxaRetorno = document.getElementById('taxas-sobre-lucro').value;
+  const taxaSobreLucro = Number(
+    document.getElementById('taxas-sobre-lucro').value,
+  );
 
-  generateReturnsArray(
+  const returnsArray = generateReturnsArray(
     aporteInicial,
     aporteMensal,
     tempodeContribuicao,
-    periodo,
+    periodoContribuicao,
     rentabilidade,
     periodoRentabilidade,
   );
+
+  console.log(returnsArray);
 }
+
+calculateButton.addEventListener('click', renderInvestments);
