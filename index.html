@@ -15,51 +15,52 @@
     <form action="POST" class="w-full">
       <h4 class="font-bold mt-3">Investimento Inicial</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
-        <label for="starting-amount" class="font-bold px-1">R$</label>
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="starting-amount" id="starting-amount" placeholder="0,00">
+        <label for="aporte-inicial" class="font-bold px-1">R$</label>
+        <input class="flex-1 outline-none bg-slate-50" type="text" name="aporte-inicial" id="aporte-inicial" placeholder="0,00">
       </div>
 
       <h4 class="font-bold mt-3">Aportes adicionais</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
-        <label for="starting-amount" class="font-bold px-1">R$</label>
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="starting-amount" id="starting-amount" placeholder="0,00">
+        <label for="aporte-mensal" class="font-bold px-1">R$</label>
+        <input class="flex-1 outline-none bg-slate-50" type="text" name="aporte-mensal" id="aporte-mensal" placeholder="0,00">
       </div>
 
       <h4 class="font-bold mt-3">Prazo</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="starting-amount" id="starting-amount" placeholder="0,00">
-        <select name="" id="" class="outline-none border-l bg-slate-50">
-          <option value="mensal">Mensal</option>
-          <option value="anual">Anual</option>
+        <input class="flex-1 outline-none bg-slate-50" type="text" name="prazo-de-aportes" id="prazo-de-aportes" placeholder="0,00">
+        <select name="periodo-prazo-de-aportes" id="periodo-prazo-de-aportes" class="outline-none border-l bg-slate-50">
+          <option value="mes">Mensal</option>
+          <option value="ano">Anual</option>
         </select>
       </div>
 
       <h4 class="font-bold mt-3">Rentabilidade</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
-        <label for="starting-amount" class="font-bold px-1">%</label>
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="starting-amount" id="starting-amount" placeholder="0,00">
-        <select name="" id="" class="outline-none border-l bg-slate-50">
-          <option value="mensal">Mensal</option>
-          <option value="anual">Anual</option>
+        <label for="rentabilidade" class="font-bold px-1">%</label>
+        <input class="flex-1 outline-none bg-slate-50" type="text" name="rentabilidade" id="rentabilidade" placeholder="0,00">
+        <select name="periodo-rentabilidade" id="periodo-rentabilidade" class="outline-none border-l bg-slate-50">
+          <option value="mes">Mensal</option>
+          <option value="ano">Anual</option>
         </select>
       </div>
 
       <h4 class="font-bold mt-3">Impostos sobre o lucro</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
-        <label for="starting-amount" class="font-bold px-1">%</label>
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="starting-amount" id="starting-amount" placeholder="0,00">
+        <label for="taxas-sobre-lucro" class="font-bold px-1">%</label>
+        <input class="flex-1 outline-none bg-slate-50" type="text" name="taxas-sobre-lucro" id="taxas-sobre-lucro" placeholder="0,00">
       </div>
     </form>
 
     <div class="flex font-bold">
       <button class="flex-1 py-2 px-1 text-neutral-600 hover:text-yellow-900">Limpar</button>
-      <button class="border border-current rounded-md flex-1 py-2 px-1 bg-yellow-600  text-neutral-100 hover:bg-yellow-900">Calcular</button>
+      <button class="border border-current rounded-md flex-1 py-2 px-1 bg-yellow-600  text-neutral-100 hover:bg-yellow-900" id="calcular-investimento">Calcular</button>
     </div>
 
   </aside>
   <main class="col-span-2 row-span-2">
     <p>Resultados</p>
   </main>
+  <script type="module" src="./main.js"></script>
 </body>
 
 </html>

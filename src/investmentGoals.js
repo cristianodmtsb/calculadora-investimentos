@@ -1,14 +1,14 @@
-function convertToMontlyReturn(taxaRetornoAnual) {
-  return taxaRetornoAnual ** (1 / 12);
+function converteParaTaxaRetornoMensal(periodoRentabilidadeAnual) {
+  return periodoRentabilidadeAnual ** (1 / 12);
 }
 
-function generateReturnsArray(
+export function generateReturnsArray(
   aporteInicial = 0,
-  tempodeContribuicao = 0,
-  periodo = 'mes',
   aporteMensal = 0,
+  tempodeContribuicao = 0,
+  periodoContribuicao = 'mes',
   rentabilidade = 0,
-  taxaRetorno = 'mes',
+  periodoRentabilidade = 'mes',
 ) {
   if (!tempodeContribuicao || !aporteInicial) {
     throw new Error(
@@ -16,40 +16,42 @@ function generateReturnsArray(
     );
   }
 
-  const taxaRetornFinal =
-    taxaRetorno === 'mes'
+  const taxaRetornoFinal =
+    periodoRentabilidade === 'mes'
       ? 1 + rentabilidade / 100
-      : convertToMontlyReturn(1 + rentabilidade / 100);
+      : converteParaTaxaRetornoMensal(1 + rentabilidade / 100);
 
   const tempoContribuicaoFinal =
-    periodo === 'mes' ? tempodeContribuicao : tempodeContribuicao * 12;
+    periodoContribuicao === 'mes'
+      ? tempodeContribuicao
+      : tempodeContribuicao * 12;
 
   const referenceInvestmentObject = {
     montanteInvestido: aporteInicial,
-    retornoDosJuros: 0,
+    retornoDosInvestimentosMes: 0,
     retornoTotalJuros: 0,
     mesCount: 0,
     montanteTotal: aporteInicial,
   };
 
-  const returnsArray = [referenceInvestmentObject, {}];
+  const returnsArray = [referenceInvestmentObject];
 
   for (
-    let referenciaTempo = 0;
-    referenciaTempo <= taxaRetornFinal;
+    let referenciaTempo = 1;
+    referenciaTempo <= tempoContribuicaoFinal;
     referenciaTempo++
   ) {
     const montanteTotal =
-      returnsArray[referenciaTempo - 1].montanteTotal * taxaRetornFinal +
+      returnsArray[referenciaTempo - 1].montanteTotal * taxaRetornoFinal +
       aporteMensal;
-    const retornoDosJuros =
-      returnsArray[referenciaTempo - 1].montanteTotal * taxaRetornFinal;
+    const retornoDosInvestimentosMes =
+      returnsArray[referenciaTempo - 1].montanteTotal * taxaRetornoFinal;
     const montanteInvestido = aporteInicial + aporteMensal * referenciaTempo;
     const retornoTotalJuros = montanteTotal - montanteInvestido;
 
     returnsArray.push({
       montanteInvestido: montanteInvestido,
-      retornoDosJuros: retornoDosJuros,
+      retornoDosInvestimentosMes: retornoDosInvestimentosMes,
       retornoTotalJuros: retornoTotalJuros,
       mesCount: referenciaTempo,
       montanteTotal: montanteTotal,
