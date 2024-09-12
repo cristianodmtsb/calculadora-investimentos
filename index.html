@@ -12,22 +12,22 @@
   <aside class="row-span-2 flex flex-col justify-between py-5 px-4 bg-slate-50">
     <h1 class="text-2xl font-bold text-yellow-600">Calculadora de Investimentos</h1>
 
-    <form action="POST" class="w-full">
+    <form id="formulario-investimento" class="w-full">
       <h4 class="font-bold mt-3">Investimento Inicial</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
         <label for="aporte-inicial" class="font-bold px-1">R$</label>
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="aporte-inicial" id="aporte-inicial" placeholder="0,00">
+        <input class="flex-1 outline-none bg-slate-50" type="number" required name="aporte-inicial" id="aporte-inicial" placeholder="0,00">
       </div>
 
       <h4 class="font-bold mt-3">Aportes adicionais</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
         <label for="aporte-mensal" class="font-bold px-1">R$</label>
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="aporte-mensal" id="aporte-mensal" placeholder="0,00">
+        <input class="flex-1 outline-none bg-slate-50" type="number" name="aporte-mensal" id="aporte-mensal" placeholder="0,00">
       </div>
 
       <h4 class="font-bold mt-3">Prazo</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="prazo-de-aportes" id="prazo-de-aportes" placeholder="0,00">
+        <input class="flex-1 outline-none bg-slate-50" type="number" required name="prazo-de-aportes" id="prazo-de-aportes" placeholder="0,00">
         <select name="periodo-prazo-de-aportes" id="periodo-prazo-de-aportes" class="outline-none border-l bg-slate-50">
           <option value="mes">Mensal</option>
           <option value="ano">Anual</option>
@@ -37,7 +37,7 @@
       <h4 class="font-bold mt-3">Rentabilidade</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
         <label for="rentabilidade" class="font-bold px-1">%</label>
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="rentabilidade" id="rentabilidade" placeholder="0,00">
+        <input class="flex-1 outline-none bg-slate-50" type="number" required name="rentabilidade" id="rentabilidade" placeholder="0,00">
         <select name="periodo-rentabilidade" id="periodo-rentabilidade" class="outline-none border-l bg-slate-50">
           <option value="mes">Mensal</option>
           <option value="ano">Anual</option>
@@ -47,13 +47,13 @@
       <h4 class="font-bold mt-3">Impostos sobre o lucro</h4>
       <div class="flex w-full border border-current rounded-md flex py-2 px-1">
         <label for="taxas-sobre-lucro" class="font-bold px-1">%</label>
-        <input class="flex-1 outline-none bg-slate-50" type="text" name="taxas-sobre-lucro" id="taxas-sobre-lucro" placeholder="0,00">
+        <input class="flex-1 outline-none bg-slate-50" type="number" name="taxas-sobre-lucro" id="taxas-sobre-lucro" placeholder="0,00">
       </div>
     </form>
 
     <div class="flex font-bold">
       <button class="flex-1 py-2 px-1 text-neutral-600 hover:text-yellow-900">Limpar</button>
-      <button class="border border-current rounded-md flex-1 py-2 px-1 bg-yellow-600  text-neutral-100 hover:bg-yellow-900" id="btn-calcular-investimento">Calcular</button>
+      <button type="submit" form="formulario-investimento" class="border border-current rounded-md flex-1 py-2 px-1 bg-yellow-600  text-neutral-100 hover:bg-yellow-900" id="btn-calcular-investimento">Calcular</button>
     </div>
 
   </aside>
